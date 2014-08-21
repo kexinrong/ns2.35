@@ -65,8 +65,8 @@ for link1 in linkspeed_range:
   for link2 in linkspeed_range:
     linkspeed_topology = topofolder + "/linkspeed-" + str(link1) + "-" + str(link2) + ".txt"
     for run in range(1, iteration_count + 1):
-      synthesize( "/home/am2/anirudh/multilink-take2.dna.2", linkspeed_topology, rationalstr,      traffic_workload, 1.0, 100, run, "multilinkremy" + str(link1) + "-" + str(link2));
-      synthesize( "/home/am2/anirudh/bigbertha-10x.dna.4",   linkspeed_topology, rationalstr,      traffic_workload, 1.0, 100, run, "10x-link" + str(link1) + "-" + str(link2));
+      synthesize( os.getcwd() + "/multilink-take2.dna.2", linkspeed_topology, rationalstr,      traffic_workload, 1.0, 100, run, "multilinkremy" + str(link1) + "-" + str(link2));
+      synthesize( os.getcwd() "/bigbertha-10x.dna.4",   linkspeed_topology, rationalstr,      traffic_workload, 1.0, 100, run, "10x-link" + str(link1) + "-" + str(link2));
       synthesize( "NULL",                                    linkspeed_topology, cubicsfqCoDelstr, traffic_workload, 1.0, 100, run, "cubicsfqCoDel-link" + str(link1) + "-" + str(link2));
       synthesize( "NULL",                                    linkspeed_topology, cubicstr,         traffic_workload, 1.0, 100, run, "cubic-link" + str(link1) + "-" + str(link2));
 

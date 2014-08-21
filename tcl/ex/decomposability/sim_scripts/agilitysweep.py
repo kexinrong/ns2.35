@@ -51,12 +51,12 @@ synthesize.cmdlines=""
 for delay in range(1, 151, 1):
   delay_topology = topofolder + "/delay" + str(delay) + ".txt"
   for run in range(1, iteration_count + 1):
-    synthesize( "/data/lsp/owenhsin/anirudh/camera-ready/150-alone/150-alone.dna.2", delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt150"+str(delay));
-    synthesize( "/data/lsp/owenhsin/anirudh/camera-ready/140160/145--155.dna.4", delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt145--155"+str(delay));
-    synthesize( "/data/lsp/owenhsin/anirudh/camera-ready/140160/140-160.dna.5",     delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt140--160"+str(delay));
-    synthesize( "/data/lsp/owenhsin/anirudh/prthaker/rtt-config-1/rtt_10x.dna.3",    delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt110--200"+str(delay));
-    synthesize( "/data/lsp/owenhsin/anirudh/prthaker/rtt-config-2/rtt_20x.dna.4",    delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt50--250"+str(delay));
-    synthesize( "/data/lsp/owenhsin/anirudh/prthaker/rtt-config-3/rtt_30x.dna.2",    delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt10--280"+str(delay));
+    synthesize(os.getcwd() + "/150-alone.dna.2", delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt150"+str(delay));
+    synthesize( os.getcwd() + "/145--155.dna.4", delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt145--155"+str(delay));
+    synthesize( os.getcwd() + "/140-160.dna.5",     delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt140--160"+str(delay));
+    synthesize( os.getcwd() + "/rtt_10x.dna.3",    delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt110--200"+str(delay));
+    synthesize( os.getcwd() + "/rtt_20x.dna.4",    delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt50--250"+str(delay));
+    synthesize( os.getcwd() + "/rtt_30x.dna.2",    delay_topology, rationalstr, traffic_workload, 1.0, 100, run, "rtt10--280"+str(delay));
     synthesize( "NULL",    delay_topology,     cubicstr,              traffic_workload, 1.0, 100, run, "cubic" + str(delay));
     synthesize( "NULL",    delay_topology,     cubicsfqCoDelstr,      traffic_workload, 1.0, 100, run, "cubicsfqCoDel" + str(delay));
 

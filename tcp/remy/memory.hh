@@ -34,6 +34,8 @@ public:
 
   void reset( void ) { _rec_send_ewma = _rec_rec_ewma = _rtt_ratio = _slow_rec_rec_ewma = _last_tick_sent = _last_tick_received = _min_rtt = 0; }
 
+  const DataType & field( unsigned int num ) const { return num == 0 ? _rec_send_ewma : num == 1 ? _rec_rec_ewma : num == 2 ? _rtt_ratio : _slow_rec_rec_ewma ; }
+
   void packet_sent( const RemyPacket & packet __attribute((unused)) ) {}
   void packets_received( const std::vector< RemyPacket > & packets, const unsigned int flow_id );
   void advance_to( const unsigned int tickno __attribute((unused)) ) {}

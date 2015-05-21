@@ -214,15 +214,6 @@ GusteauTcpAgent::update_memory( const RemyPacket & packet, const unsigned int fl
 	_memory.packets_received( packets, flow_id );
 }
 
-double 
-calculate_caution( const double metric ) {
-  if( metric > 1.5 ) {
-    return pow( metric, 2 ) / 5 + .1;
-  } else {
-    return pow( metric, 2 ) / 50 + .1;
-  }
-}
-
 void
 GusteauTcpAgent::update_cwnd_and_pacing( void )
 {
@@ -230,33 +221,23 @@ GusteauTcpAgent::update_cwnd_and_pacing( void )
 	double timestep_inverse = .001;
         unsigned int new_cwnd = cwnd_;
 
-        double receive_ratio = 1.0;
-        if( _memory.field( 0 ) > 0 ) {
-          receive_ratio = _memory.field( 1 ) / _memory.field ( 0 );
-          _max_receive_ratio = max( receive_ratio, _max_receive_ratio );
-          
-          assert( _max_receive_ratio >= 1.0 );
-        }
-
         /* RTT ratio threshold */
         if( _memory.field( 2 ) <= 1.01  and _memory.field( 2 ) >= 1.0 ) {
           /* Gradually allow more sending */
-          new_cwnd = cwnd_ + 35;
+          new_cwnd = cwnd_ + 1;
           
           /* Queue is small-- send faster! 
              Increase rate more cautiously as we approach smaller sewma values
              so as not to flood the queue. */
-          double caution = calculate_caution( _max_receive_ratio );
-          _intersend_time = _memory.field( 0 ) / ( _memory.field( 0 )/caution + 1 );
+	  if( _memory.field( 1 ) > 1 ) {
+		  _intersend_time = _memory.field( 1 ) / ( _memory.field( 1 )/10 + 1 );
+	  } else {
+		  _intersend_time = _memory.field( 1 ) / ( _memory.field( 1 ) + 1 );
+	  }
         } else if( _memory.field( 2 ) > 1.01 ) {
           /* Queue is too large; back off */
-          //double caution = calculate_caution( _max_receive_ratio );
-          _intersend_time =  _memory.field( 1 ) * max( 1.1, 1.1 / _max_receive_ratio );
+		_intersend_time = _memory.field( 1 ) * 1.1;
         }
-
-	//if ( new_cwnd > 16384 ) {
-	//	new_cwnd = 16384;
-	//}
 
 	cwnd_ = new_cwnd;
 

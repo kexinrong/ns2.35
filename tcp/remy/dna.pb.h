@@ -292,23 +292,23 @@ class Memory : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional double rec_rec_ewma = 22;
-  inline bool has_rec_rec_ewma() const;
-  inline void clear_rec_rec_ewma();
-  static const int kRecRecEwmaFieldNumber = 22;
-  inline double rec_rec_ewma() const;
-  inline void set_rec_rec_ewma(double value);
+  // optional double rtt_ratio = 23;
+  inline bool has_rtt_ratio() const;
+  inline void clear_rtt_ratio();
+  static const int kRttRatioFieldNumber = 23;
+  inline double rtt_ratio() const;
+  inline void set_rtt_ratio(double value);
 
   // @@protoc_insertion_point(class_scope:RemyBuffers.Memory)
  private:
-  inline void set_has_rec_rec_ewma();
-  inline void clear_has_rec_rec_ewma();
+  inline void set_has_rtt_ratio();
+  inline void clear_has_rtt_ratio();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  double rec_rec_ewma_;
+  double rtt_ratio_;
   friend void  protobuf_AddDesc_dna_2eproto();
   friend void protobuf_AssignDesc_dna_2eproto();
   friend void protobuf_ShutdownFile_dna_2eproto();
@@ -636,28 +636,28 @@ inline void MemoryRange::set_allocated_upper(::RemyBuffers::Memory* upper) {
 
 // Memory
 
-// optional double rec_rec_ewma = 22;
-inline bool Memory::has_rec_rec_ewma() const {
+// optional double rtt_ratio = 23;
+inline bool Memory::has_rtt_ratio() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void Memory::set_has_rec_rec_ewma() {
+inline void Memory::set_has_rtt_ratio() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void Memory::clear_has_rec_rec_ewma() {
+inline void Memory::clear_has_rtt_ratio() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void Memory::clear_rec_rec_ewma() {
-  rec_rec_ewma_ = 0;
-  clear_has_rec_rec_ewma();
+inline void Memory::clear_rtt_ratio() {
+  rtt_ratio_ = 0;
+  clear_has_rtt_ratio();
 }
-inline double Memory::rec_rec_ewma() const {
-  // @@protoc_insertion_point(field_get:RemyBuffers.Memory.rec_rec_ewma)
-  return rec_rec_ewma_;
+inline double Memory::rtt_ratio() const {
+  // @@protoc_insertion_point(field_get:RemyBuffers.Memory.rtt_ratio)
+  return rtt_ratio_;
 }
-inline void Memory::set_rec_rec_ewma(double value) {
-  set_has_rec_rec_ewma();
-  rec_rec_ewma_ = value;
-  // @@protoc_insertion_point(field_set:RemyBuffers.Memory.rec_rec_ewma)
+inline void Memory::set_rtt_ratio(double value) {
+  set_has_rtt_ratio();
+  rtt_ratio_ = value;
+  // @@protoc_insertion_point(field_set:RemyBuffers.Memory.rtt_ratio)
 }
 
 // -------------------------------------------------------------------

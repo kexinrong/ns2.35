@@ -77,7 +77,7 @@ void protobuf_AssignDesc_dna_2eproto() {
       sizeof(MemoryRange));
   Memory_descriptor_ = file->message_type(2);
   static const int Memory_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Memory, rec_rec_ewma_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Memory, rtt_ratio_),
   };
   Memory_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -156,11 +156,11 @@ void protobuf_AddDesc_dna_2eproto() {
     "erTree\022\"\n\004leaf\030\003 \001(\0132\024.RemyBuffers.Whisk"
     "er\"U\n\013MemoryRange\022\"\n\005lower\030\013 \001(\0132\023.RemyB"
     "uffers.Memory\022\"\n\005upper\030\014 \001(\0132\023.RemyBuffe"
-    "rs.Memory\"\036\n\006Memory\022\024\n\014rec_rec_ewma\030\026 \001("
-    "\001\"y\n\007Whisker\022\030\n\020window_increment\030\037 \001(\021\022\027"
-    "\n\017window_multiple\030  \001(\001\022\021\n\tintersend\030! \001"
-    "(\001\022(\n\006domain\030\" \001(\0132\030.RemyBuffers.MemoryR"
-    "ange", 404);
+    "rs.Memory\"\033\n\006Memory\022\021\n\trtt_ratio\030\027 \001(\001\"y"
+    "\n\007Whisker\022\030\n\020window_increment\030\037 \001(\021\022\027\n\017w"
+    "indow_multiple\030  \001(\001\022\021\n\tintersend\030! \001(\001\022"
+    "(\n\006domain\030\" \001(\0132\030.RemyBuffers.MemoryRang"
+    "e", 401);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dna.proto", &protobuf_RegisterTypes);
   WhiskerTree::default_instance_ = new WhiskerTree();
@@ -769,7 +769,7 @@ void MemoryRange::Swap(MemoryRange* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Memory::kRecRecEwmaFieldNumber;
+const int Memory::kRttRatioFieldNumber;
 #endif  // !_MSC_VER
 
 Memory::Memory()
@@ -790,7 +790,7 @@ Memory::Memory(const Memory& from)
 
 void Memory::SharedCtor() {
   _cached_size_ = 0;
-  rec_rec_ewma_ = 0;
+  rtt_ratio_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -826,7 +826,7 @@ Memory* Memory::New() const {
 }
 
 void Memory::Clear() {
-  rec_rec_ewma_ = 0;
+  rtt_ratio_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -841,13 +841,13 @@ bool Memory::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional double rec_rec_ewma = 22;
-      case 22: {
-        if (tag == 177) {
+      // optional double rtt_ratio = 23;
+      case 23: {
+        if (tag == 185) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &rec_rec_ewma_)));
-          set_has_rec_rec_ewma();
+                 input, &rtt_ratio_)));
+          set_has_rtt_ratio();
         } else {
           goto handle_unusual;
         }
@@ -880,9 +880,9 @@ failure:
 void Memory::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:RemyBuffers.Memory)
-  // optional double rec_rec_ewma = 22;
-  if (has_rec_rec_ewma()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(22, this->rec_rec_ewma(), output);
+  // optional double rtt_ratio = 23;
+  if (has_rtt_ratio()) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(23, this->rtt_ratio(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -895,9 +895,9 @@ void Memory::SerializeWithCachedSizes(
 ::google::protobuf::uint8* Memory::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:RemyBuffers.Memory)
-  // optional double rec_rec_ewma = 22;
-  if (has_rec_rec_ewma()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(22, this->rec_rec_ewma(), target);
+  // optional double rtt_ratio = 23;
+  if (has_rtt_ratio()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(23, this->rtt_ratio(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -912,8 +912,8 @@ int Memory::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional double rec_rec_ewma = 22;
-    if (has_rec_rec_ewma()) {
+    // optional double rtt_ratio = 23;
+    if (has_rtt_ratio()) {
       total_size += 2 + 8;
     }
 
@@ -944,8 +944,8 @@ void Memory::MergeFrom(const ::google::protobuf::Message& from) {
 void Memory::MergeFrom(const Memory& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_rec_rec_ewma()) {
-      set_rec_rec_ewma(from.rec_rec_ewma());
+    if (from.has_rtt_ratio()) {
+      set_rtt_ratio(from.rtt_ratio());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -970,7 +970,7 @@ bool Memory::IsInitialized() const {
 
 void Memory::Swap(Memory* other) {
   if (other != this) {
-    std::swap(rec_rec_ewma_, other->rec_rec_ewma_);
+    std::swap(rtt_ratio_, other->rtt_ratio_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
